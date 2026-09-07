@@ -2,17 +2,15 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [Header("Movimiento")]
     public float velocidad = 7f;
     public float fuerzaSalto = 12f;
 
-    [Header("Detección del suelo")]
     public Transform puntoSuelo;
     public float radioSuelo = 0.2f;
     public LayerMask capaSuelo;
 
     private Rigidbody2D rb;
-    private bool enSuelo;
+    private bool estaEnSuelo;
 
     void Start()
     {
@@ -21,29 +19,29 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        enSuelo = Physics2D.OverlapCircle(
+        // Detectar si está tocando el suelo
+        estaEnSuelo = Physics2D.OverlapCircle(
             puntoSuelo.position,
             radioSuelo,
             capaSuelo
         );
 
-        if (Input.GetButtonDown("Jump") && enSuelo)
-        {
-            rb.linearVelocity = new Vector2(
-                rb.linearVelocity.x,
-                fuerzaSalto
-            );
-        }
-    }
-
-    void FixedUpdate()
-    {
+        // Movimiento horizontal
         float movimiento = Input.GetAxisRaw("Horizontal");
 
         rb.linearVelocity = new Vector2(
             movimiento * velocidad,
             rb.linearVelocity.y
         );
+
+        // Salto
+        if (Input.GetKeyDown(KeyCode.Space) && estaEnSuelo)
+        {
+            rb.linearVelocity = new Vector2(
+                rb.linearVelocity.x,
+                fuerzaSalto
+            );
+        }
     }
 
     private void OnDrawGizmosSelected()

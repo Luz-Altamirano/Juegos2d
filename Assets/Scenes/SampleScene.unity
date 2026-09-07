@@ -1292,7 +1292,7 @@ Rigidbody2D:
   m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!70 &796241729
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -1350,10 +1350,10 @@ MonoBehaviour:
   velocidad: 7
   fuerzaSalto: 12
   puntoSuelo: {fileID: 1695954348}
-  radioSuelo: 0.2
+  radioSuelo: 0.4
   capaSuelo:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 55
 --- !u!1 &950887208
 GameObject:
   m_ObjectHideFlags: 0
@@ -1829,6 +1829,10 @@ PrefabInstance:
       value: character_berie
       objectReference: {fileID: 0}
     - target: {fileID: -2253911629886400664, guid: e2b19674a8f67ca4587d195ca0ebaed6, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -2253911629886400664, guid: e2b19674a8f67ca4587d195ca0ebaed6, type: 3}
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
@@ -1910,7 +1914,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1695954348}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: PuntoSuelo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
